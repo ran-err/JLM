@@ -78,4 +78,5 @@ class NGramModel():
 if __name__ == "__main__":
     # test the model
     model = NGramModel(ngram_file='lm3', ngram_order=2)
-    print(model.evaluate(['今日/キョー/名詞-普通名詞-副詞可能', 'は/ワ/助詞-係助詞', 'いい/イー/形容詞-非自立可能', '天気/テンキ/名詞-普通名詞-一般', 'です/デス/助動詞'], debug=True))
+    # print(model.evaluate(['今日/キョー/名詞-普通名詞-副詞可能', 'は/ワ/助詞-係助詞', 'いい/イー/形容詞-非自立可能', '天気/テンキ/名詞-普通名詞-一般', 'です/デス/助動詞'], debug=True))
+    # print(model.evaluate(['今日/キョー/名詞-普通名詞-副詞可能', 'は/ワ/助詞-係助詞', 'いい/イー/形容詞-非自立可能', '天気/テンキ/名詞-普通名詞-一般', 'です/デス/助動詞'], debug=True))
