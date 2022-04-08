@@ -15,12 +15,17 @@ import time
 
 import argparse
 parser = argparse.ArgumentParser()
-parser.add_argument("--experiment_id", "-e", type=int, default=1, help="experiment id to eval")
-parser.add_argument("--eval_size", "-es", type=int, default=100, help="Number of sentences to evaluate")
+# parser.add_argument("--experiment_id", "-e", type=int, default=1, help="experiment id to eval")
+parser.add_argument("--experiment_id", "-e", type=int, default=10, help="experiment id to eval")
+# parser.add_argument("--eval_size", "-es", type=int, default=100, help="Number of sentences to evaluate")
+parser.add_argument("--eval_size", "-es", type=int, default=20000, help="Number of sentences to evaluate")
+# parser.add_argument("--use_ngram", "-ng", type=bool, default=False, help="Use ngram decoder or not")
 parser.add_argument("--use_ngram", "-ng", type=bool, default=False, help="Use ngram decoder or not")
 parser.add_argument("--ngram_order", "-o", type=int, default=3, help="Ngram order")
 parser.add_argument("--comp", "-c", type=int, default=0, help="Compression bit, 0 means no compression")
-parser.add_argument("--vocab_select", "-vs", type=bool, default=False, help="Use vocab select method or not")
+# parser.add_argument("--vocab_select", "-vs", type=bool, default=False, help="Use vocab select method or not")
+parser.add_argument("--vocab_select", "-vs", type=bool, default=True, help="Use vocab select method or not")
+# parser.add_argument("--top_sampling", "-ts", type=bool, default=False, help="Sampling strategy for vocab select")
 parser.add_argument("--top_sampling", "-ts", type=bool, default=False, help="Sampling strategy for vocab select")
 parser.add_argument("--random_sampling", "-rs", type=bool, default=False, help="Sampling strategy for vocab select")
 parser.add_argument("--samples", "-s", type=int, default=0, help="Samples when using advanced sampling")
@@ -147,6 +152,8 @@ class Evaluator:
                 print('-------------sentence selection used')
 
             for line in lines:
+                if line == '\n':
+                    continue
                 tokens = line.strip().split(' ')
                 if not has_oov(tokens):
                     readings = ''.join([x.split('/')[1] if x.split('/')[1] != '' else x.split('/')[0] for x in tokens])

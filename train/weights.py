@@ -1,7 +1,9 @@
 from model import RNNLM_Model
 import os
 import pickle
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 import numpy as np
 import argparse
 import sys
@@ -117,4 +119,5 @@ def build_compressed_embedding_pkl(experiment ,name):
 '''
 
 if __name__ == "__main__":
-    dump_trained_weights(args.experiment, args.verbose)
+    # dump_trained_weights(args.experiment, args.verbose)
+    dump_trained_weights(10, True)

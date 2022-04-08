@@ -125,9 +125,10 @@ class NGramDecoder():
         return output[:topN]
 
 if __name__ == "__main__":
-    decoder = NGramDecoder()
+    decoder = NGramDecoder(experiment_id=10)
     start_time = time.time()
-    result = decoder.decode('キョーワイーテンキデス', topN=10, beam_width=10, use_oov=True)
+    # result = decoder.decode('キョーワイーテンキデス', topN=10, beam_width=10, use_oov=True)
+    result = decoder.decode('xianshi', topN=10, beam_width=10, use_oov=True)
     for item in result:
         print(item)
     print("--- %s seconds ---" % (time.time() - start_time))

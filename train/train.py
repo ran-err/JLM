@@ -1,5 +1,7 @@
 import time
-import tensorflow as tf
+# import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from model import RNNLM_Model
 import sys
 sys.path.append('..')
@@ -7,12 +9,13 @@ from config import train_path, experiment_path, ExperimentConfig
 from sacred import Experiment
 from sacred.observers import FileStorageObserver
 ex = Experiment()
-ex.observers.append(FileStorageObserver.create("experiments"))
+# ex.observers.append(FileStorageObserver.create("experiments"))
+ex.observers.append(FileStorageObserver("experiments"))
 
 # set parameters here so they can be shared between the experiment observer and the model
 parameters = {
     "debug": False,
-    "gpu_id": 1,
+    "gpu_id": 0,
     "vocab_size": 100000,
     "optimizer": "adam",
     "batch_size": 128,
@@ -59,6 +62,7 @@ def train_RNNLM(_run):
     with tf.Graph().as_default():
         # set random seed before the graph is built
         tf.set_random_seed(config.tf_random_seed)
+        # tf.random.set_seed(config.tf_random_seed)
 
         model = create_RNNLM(config)
 
