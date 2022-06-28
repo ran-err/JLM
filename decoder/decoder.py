@@ -261,7 +261,8 @@ class CharRNNDecoder(Decoder):
         print('Char RNN decoder loaded')
 
     def _check_oov(self, word):
-        return word not in self.vocab.words
+        return sum([c not in self.w2i for c in word.split('/')[0]])
+        # return word not in self.vocab.words
 
     def _char_check_oov(self, word):
         return sum([c not in self.w2i for c in word.split('/')[0]])

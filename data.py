@@ -114,7 +114,7 @@ def split_corpus(corpus_path):
     dump_corpus_split(corpus[int(len(corpus) * 0.9):], 'test.txt')
 
 if __name__ == "__main__":
-    build_lexicon('data/zhwiki-split-1s1l-200000.txt')
-    split_corpus('data/zhwiki-split-1s1l-200000.txt')
+    build_lexicon('data/zhwiki-split-miu.txt')
+    split_corpus('data/zhwiki-split-miu.txt')
 
 

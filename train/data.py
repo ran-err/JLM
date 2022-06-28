@@ -58,7 +58,7 @@ class Corpus(object):
         with open(os.path.join(data_path, filename), 'r', encoding='utf-8') as f:
             lines = f.readlines()
             if debug:
-                lines = lines[:1024*100]
+                lines = lines[:20 * 10000]
             for line in tqdm(lines):
                 words = line.strip().split(' ')
                 if isinstance(self.vocab, CharVocab):

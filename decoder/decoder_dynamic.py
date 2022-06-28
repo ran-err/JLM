@@ -194,7 +194,7 @@ class DynamicDecoder(Decoder):
         return output[:topN]
 
 if __name__ == "__main__":
-    experiment_id = 10
+    experiment_id = 50
     use_dynamic_decoder = True
     config = json.loads(open(os.path.join(experiment_path, str(experiment_id), 'config.json'), 'rt').read())
     if config['char_rnn']:
@@ -205,7 +205,7 @@ if __name__ == "__main__":
         decoder = Decoder(experiment_id)
 
     # result = decoder.decode('キョーワイーテンキデス', topN=10, beam_width=10, vocab_select=True, samples=200, top_sampling=False, random_sampling=False)
-    result = decoder.decode('fan', topN=10, beam_width=10, vocab_select=True, samples=200, top_sampling=True, random_sampling=False)
+    result = decoder.decode('wojintianwangjiqiandaole', topN=10, beam_width=10, vocab_select=True, samples=400, top_sampling=True, random_sampling=False)
     for item in result:
         print('{} \t{}'.format(item[0], ' '.join([x.split('/')[0] for x in item[1]])))
     # print(decoder.perf_log)

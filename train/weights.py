@@ -120,4 +120,4 @@ def build_compressed_embedding_pkl(experiment ,name):
 
 if __name__ == "__main__":
     # dump_trained_weights(args.experiment, args.verbose)
-    dump_trained_weights(2, True)
+    dump_trained_weights(57, True)

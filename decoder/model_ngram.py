@@ -1,3 +1,4 @@
+from tqdm import tqdm
 import pickle
 import numpy as np
 import os
@@ -28,11 +29,11 @@ class NGramModel():
                 yield word
 
     def parse_srilm(self, file):
-        print('{} loaded'.format(file))
+        print('{} loading'.format(file))
         ngrams = {}
         with open(file, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
-            for line in lines:
+            # lines = f.readlines()
+            for line in tqdm(f.readlines()):
                 line = line.rstrip('\n')
                 fields = line.split('\t', 2)
 

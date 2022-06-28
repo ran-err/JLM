@@ -46,7 +46,7 @@ class NGramDecoder():
         self.full_lexicon = pickle.load(open(os.path.join(root_path, 'data', 'lexicon.pkl'), 'rb'))
         self.full_reading_dict = pickle.load(open(os.path.join(root_path, 'data', 'reading_dict.pkl'), 'rb'))
 
-        self.model = NGramModel(ngram_file='lm3', ngram_order=ngram_order)
+        self.model = NGramModel(ngram_file='20220525125620-1.arpa', ngram_order=ngram_order)
         
         self.perf_sen = 0
         self.perf_log = []
